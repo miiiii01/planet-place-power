@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 01 · Mingqian</title>
+
+<!-- Note the ../ — this page is inside the journal folder, so it has to
+     look one level up to find the stylesheet. -->
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Mingqian Chen</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#journal">Journal</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<article class="entry">
+  <div class="wrap wrap-narrow">
+
+    <p class="kicker">Week 01 · September 2026</p>
+
+    <!-- EDIT THIS: a title that says what you found, not what you did.
+         "The blocks that were built after the creek was filled" beats
+         "Week 1 journal entry". -->
+    <h1>Beijing & Land cover</h1>
+
+    <!-- ============================================================
+         The six parts. Every entry in this course has all six.
+         Do not delete a heading — if a section is thin, that is
+         information too.
+         ============================================================ -->
+
+    <h2>The question</h2>
+    <p>
+      In Haidian District, green spaces and cultural heritage sites are associated with different 
+     land-cover patterns, and I could begin to examine this relationship using land-cover data.
+      
+    </p>
+
+    <h2>The data</h2>
+    <p>
+      I used the Site Scanner to examine Beijing Haidian District. I used Satellite
+  (true colour) as the base layer, and added three layers: Land Cover, When It
+  Was Built, and Summer Surface Heat. The Land Cover layer is from ESA
+  WorldCover (2021) at 10 m resolution. The When It Was Built layer is from
+  GHSL P2023A and shows built-up areas across different periods. The Summer
+  Surface Heat layer uses MODIS data to show daytime land surface temperature
+  during summer.
+           These layers allow me to compare land cover, the built environment, and
+  surface temperature across Haidian. However, the Site Scanner does not
+  provide a specific cultural heritage layer, so cultural heritage sites
+  cannot be directly identified from these data.
+    </p>
+    <p>
+      
+      <em>I am using Land Cover to describe the spatial distribution of different
+  land-cover types, and it might fail because the categories are broad and do
+  not capture every type of land use.</em>
+     <em>  I am using When It Was Built to describe differences in the age and
+  development history of built-up areas, and it might fail because the data
+  uses a relatively coarse 100 m grid.</em>
+      <em> I am using Summer Surface Heat to represent spatial differences in surface
+  temperature, and it might fail because it measures land surface temperature
+  rather than air temperature.</em>
+    </p>
+
+    <h2>The method</h2>
+    <p>
+       I first viewed the whole of Beijing using Satellite (true colour) as the
+  base layer. I then zoomed in to the whole of Haidian District and examined
+  the three overlay layers: Land Cover, When It Was Built, and Summer Surface
+  Heat. Finally, I zoomed in further to look at individual neighbourhoods,
+  including Wansliu, Qinghe, and Xiangshan. I adjusted the layer opacity to
+  approximately 0.20–0.45 so that the overlay and the satellite imagery could
+  both be seen clearly.
+    </p>
+
+    <!-- ============================================================
+         YOUR EVIDENCE
+
+         WEEK 1: a screenshot from the Site Scanner. Upload it into this
+         journal folder (Add file → Upload files) and change the src
+         below to your filename, for example src="scanner-01.png".
+
+         FROM WEEK 2, once ArcGIS Online is live: publish your web map,
+         choose Share → Embed, delete the <img> line, remove the <!-- and
+         --> 
+    <figure>
+      <img src="截屏2026-09-06 21.01.09.png" alt="Site Scanner view of Haidian District showing satellite imagery with land cover">
+      <!--
+      <iframe src="PASTE-YOUR-EMBED-URL-HERE"
+              title="Describe your map" loading="lazy"></iframe>
+      -->
+      <figcaption>
+        Site Scanner view of Beijing showing the Land Cover layer. The map shows the
+  distribution of different land-cover types across the city and its surrounding
+  area.
+      </figcaption>
+    </figure>
+
+    <h2>What I found</h2>
+    <p>
+        The Land Cover map shows a clear pattern in the distribution of built-up and
+  vegetated areas across Beijing. Most of the urban area has a high density of
+  built-up land and relatively few blue-green areas. However, some larger
+  blue-green patches remain in the central area. There are also noticeable
+  clusters of greener land around Sijiqing and the Gucheng area to the west.
+  This suggests that green and blue land-cover types are unevenly distributed
+  rather than spread evenly across the city.
+    </p>
+
+    <h2>What this does not show</h2>
+    <div class="limits">
+      <p>
+        This map shows broad land-cover patterns across Beijing, but it does not
+    show the exact boundaries or quality of individual green spaces. It also
+    cannot show whether green areas are accessible to people or how they are
+    used. My observation focuses on the city-scale view shown in the screenshot;
+    if I zoomed in further, smaller patches of green space and differences
+    between neighbourhoods might become more visible.
+      </p>
+      <p>
+        <strong>AI use:</strong> AI-assisted for organizing and editing the wording
+    of this journal entry, using ChatGPT. 
+           <!-- Add script to the <head> of your page to load the embeddable map component -->
+<script type="module" src="https://js.arcgis.com/5.1/embeddable-components/"></script>
+<!-- Add custom element to <body> of your page -->
+ <arcgis-embedded-map style="height:600px;width:700px;" item-id="83e61409db07462ab5730c90e978597b" theme="light" time-zone-label-enabled center="115.71690273284821,39.27108124086316"scale="2311162.217155" portal-url="https://nyuds.maps.arcgis.com"></arcgis-embedded-map>
+      </p>
+    </div>
+
+    <a class="back" href="../index.html#journal">← Back to all entries</a>
+
+  </div>
+</article>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap wrap-narrow">
+    <p>Mingqian · SOCS-SHU 289 · NYU Shanghai · Fall 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
