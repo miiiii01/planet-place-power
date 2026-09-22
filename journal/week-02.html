@@ -1,155 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Week 01 · Mingqian</title>
-
-<!-- Note the ../ — this page is inside the journal folder, so it has to
-     look one level up to find the stylesheet. -->
-<link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 02 - Atmosphere</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
-<a class="skip" href="#main">Skip to content</a>
+  <header>
+    <h1>Week 02 - Atmosphere</h1>
+    <p>Climate normals for Beijing</p>
+  </header>
 
-<header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="../index.html">Mingqian Chen</a>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="../index.html#journal">Journal</a>
-    </nav>
-  </div>
-</header>
+  <main>
+    <section>
+      <h2>The question</h2>
+      <p>How does Beijing’s seasonal temperature and precipitation distribution compare with Shanghai, Guangzhou, and China’s national pattern?</p>
+    </section>
 
-<main id="main">
-<article class="entry">
-  <div class="wrap wrap-narrow">
+    <section>
+      <h2>The data</h2>
+      <p>World Historical Climate — Monthly Averages for GHCN-D Stations for 1981–2010, published by Esri from NOAA NCEI GHCN-Daily v3.24. Opened on September 23, 2026. The averaging window is 1981–2010. The description says 4,620 stations, but the table shows 7,480 rows.</p>
+    </section>
 
-    <p class="kicker">Week 01 · September 2026</p>
+    <section>
+      <h2>The method</h2>
+      <p>I filtered the layer with <code>GHCN-D ID starts with CH</code>, which returned 226 Chinese stations. I then added <code>AND GHCN-D ID is CHM00054511</code> to isolate Beijing. I charted the twelve <code>[Month] Avg. Temp C</code> fields and the twelve <code>[Month] Mean Prcp mm</code> fields, using Mean aggregation.</p>
+    </section>
 
-    <!-- EDIT THIS: a title that says what you found, not what you did.
-         "The blocks that were built after the creek was filled" beats
-         "Week 1 journal entry". -->
-    <h1>Beijing & Land cover</h1>
+    <section>
+      <h2>The evidence</h2>
+      <!-- ⚠️ 下面这行 src="PASTE..." 需要你替换成 ArcGIS 给你的 iframe 链接 -->
+      <iframe width="700" height="600" allow="local-network-access; geolocation" title="Tutorial 1 - Climate normals" src="<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 02 - Atmosphere</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>Week 02 - Atmosphere</h1>
+    <p>Climate normals for Beijing</p>
+  </header>
 
-    <!-- ============================================================
-         The six parts. Every entry in this course has all six.
-         Do not delete a heading — if a section is thin, that is
-         information too.
-         ============================================================ -->
+  <main>
+    <section>
+      <h2>The question</h2>
+      <p>How does Beijing’s seasonal temperature and precipitation distribution compare with Shanghai, Guangzhou, and China’s national pattern?</p>
+    </section>
 
-    <h2>The question</h2>
-    <p>
-      In Haidian District, green spaces and cultural heritage sites are associated with different 
-     land-cover patterns, and I could begin to examine this relationship using land-cover data.
-      
-    </p>
+    <section>
+      <h2>The data</h2>
+      <p>World Historical Climate — Monthly Averages for GHCN-D Stations for 1981–2010, published by Esri from NOAA NCEI GHCN-Daily v3.24. Opened on September 23, 2026. The averaging window is 1981–2010. The description says 4,620 stations, but the table shows 7,480 rows.</p>
+    </section>
 
-    <h2>The data</h2>
-    <p>
-      I used the Site Scanner to examine Beijing Haidian District. I used Satellite
-  (true colour) as the base layer, and added three layers: Land Cover, When It
-  Was Built, and Summer Surface Heat. The Land Cover layer is from ESA
-  WorldCover (2021) at 10 m resolution. The When It Was Built layer is from
-  GHSL P2023A and shows built-up areas across different periods. The Summer
-  Surface Heat layer uses MODIS data to show daytime land surface temperature
-  during summer.
-           These layers allow me to compare land cover, the built environment, and
-  surface temperature across Haidian. However, the Site Scanner does not
-  provide a specific cultural heritage layer, so cultural heritage sites
-  cannot be directly identified from these data.
-    </p>
-    <p>
-      
-      <em>I am using Land Cover to describe the spatial distribution of different
-  land-cover types, and it might fail because the categories are broad and do
-  not capture every type of land use.</em>
-     <em>  I am using When It Was Built to describe differences in the age and
-  development history of built-up areas, and it might fail because the data
-  uses a relatively coarse 100 m grid.</em>
-      <em> I am using Summer Surface Heat to represent spatial differences in surface
-  temperature, and it might fail because it measures land surface temperature
-  rather than air temperature.</em>
-    </p>
+    <section>
+      <h2>The method</h2>
+      <p>I filtered the layer with <code>GHCN-D ID starts with CH</code>, which returned 226 Chinese stations. I then added <code>AND GHCN-D ID is CHM00054511</code> to isolate Beijing. I charted the twelve <code>[Month] Avg. Temp C</code> fields and the twelve <code>[Month] Mean Prcp mm</code> fields, using Mean aggregation.</p>
+    </section>
 
-    <h2>The method</h2>
-    <p>
-       I first viewed the whole of Beijing using Satellite (true colour) as the
-  base layer. I then zoomed in to the whole of Haidian District and examined
-  the three overlay layers: Land Cover, When It Was Built, and Summer Surface
-  Heat. Finally, I zoomed in further to look at individual neighbourhoods,
-  including Wansliu, Qinghe, and Xiangshan. I adjusted the layer opacity to
-  approximately 0.20–0.45 so that the overlay and the satellite imagery could
-  both be seen clearly.
-    </p>
+    <section>
+      <h2>The evidence</h2>
+      <!-- ⚠️ 下面这行 src="PASTE..." 需要你替换成 ArcGIS 给你的 iframe 链接 -->
+      <iframe width="700" height="600" allow="local-network-access; geolocation" title="Tutorial 1 - Climate normals" src="PASTE-YOUR-EMBED-URL-HERE" loading="lazy"></iframe>
+      <figcaption>Beijing, GHCN-D CHM00054511, 1981–2010 normal, source Esri/NOAA NCEI.</figcaption>
 
-    <!-- ============================================================
-         YOUR EVIDENCE
+      <figure>
+        <img src="beijing-temperature.png" alt="Average monthly temperature for Beijing, 1981–2010 normal.">
+        <figcaption>Average monthly temperature, Beijing (1981–2010 normal).</figcaption>
+      </figure>
+      <figure>
+        <img src="beijing-precipitation.png" alt="Average monthly precipitation for Beijing, 1981–2010 normal.">
+        <figcaption>Average monthly precipitation, Beijing (1981–2010 normal).</figcaption>
+      </figure>
+    </section>
 
-         WEEK 1: a screenshot from the Site Scanner. Upload it into this
-         journal folder (Add file → Upload files) and change the src
-         below to your filename, for example src="scanner-01.png".
+    <section>
+      <h2>What I found</h2>
+      <p>Beijing’s hottest month is July, about 26.7°C, and its coldest is January, about -3.1°C. July is also the wettest month, about 160 mm, while December is the driest, about 2 mm. The rain falls in the hot season, which is the East Asian monsoon pattern. Compared with Shanghai, Beijing is colder and drier; compared with Guangzhou, Beijing has a much stronger winter and a shorter wet season. Within China, Beijing shows a northern monsoon distribution with strong seasonal clustering. Station density is much higher in eastern China than in the west.</p>
+    </section>
 
-         FROM WEEK 2, once ArcGIS Online is live: publish your web map,
-         choose Share → Embed, delete the <img> line, remove the <!-- and
-         --> 
-    <figure>
-      <img src="截屏2026-09-06 21.01.09.png" alt="Site Scanner view of Haidian District showing satellite imagery with land cover">
-      <!--
-      <iframe src="PASTE-YOUR-EMBED-URL-HERE"
-              title="Describe your map" loading="lazy"></iframe>
-      -->
-      <figcaption>
-        Site Scanner view of Beijing showing the Land Cover layer. The map shows the
-  distribution of different land-cover types across the city and its surrounding
-  area.
-      </figcaption>
-    </figure>
+    <section>
+      <h2>What this does not show</h2>
+      <p>The 1981–2010 window is not the current WMO normal (1991–2020). Monthly means hide daily variance. One station is not a place; it is one instrument, often at an airport. Points are not a surface, and empty areas are not average—they are places with no instrument or no digitised record. Web Mercator also distorts area and density at high latitudes. Nothing here is causal.</p>
+    </section>
 
-    <h2>What I found</h2>
-    <p>
-        The Land Cover map shows a clear pattern in the distribution of built-up and
-  vegetated areas across Beijing. Most of the urban area has a high density of
-  built-up land and relatively few blue-green areas. However, some larger
-  blue-green patches remain in the central area. There are also noticeable
-  clusters of greener land around Sijiqing and the Gucheng area to the west.
-  This suggests that green and blue land-cover types are unevenly distributed
-  rather than spread evenly across the city.
-    </p>
+    <p>Personal reflections and the full AI-use disclosure have been submitted privately in Brightspace.</p>
+  </main>
+</body>
+</html>" loading="lazy"></iframe>
+      <figcaption>Beijing, GHCN-D CHM00054511, 1981–2010 normal, source Esri/NOAA NCEI.</figcaption>
 
-    <h2>What this does not show</h2>
-    <div class="limits">
-      <p>
-        This map shows broad land-cover patterns across Beijing, but it does not
-    show the exact boundaries or quality of individual green spaces. It also
-    cannot show whether green areas are accessible to people or how they are
-    used. My observation focuses on the city-scale view shown in the screenshot;
-    if I zoomed in further, smaller patches of green space and differences
-    between neighbourhoods might become more visible.
-      </p>
-      <p>
-        <strong>AI use:</strong> AI-assisted for organizing and editing the wording
-    of this journal entry, using ChatGPT. 
-           <!-- Add script to the <head> of your page to load the embeddable map component -->
-<script type="module" src="https://js.arcgis.com/5.1/embeddable-components/"></script>
-<!-- Add custom element to <body> of your page -->
- <arcgis-embedded-map style="height:600px;width:700px;" item-id="83e61409db07462ab5730c90e978597b" theme="light" time-zone-label-enabled center="115.71690273284821,39.27108124086316"scale="2311162.217155" portal-url="https://nyuds.maps.arcgis.com"></arcgis-embedded-map>
-      </p>
-    </div>
+      <figure>
+        <img src="beijing-temperature.png" alt="Average monthly temperature for Beijing, 1981–2010 normal.">
+        <figcaption>Average monthly temperature, Beijing (1981–2010 normal).</figcaption>
+      </figure>
+      <figure>
+        <img src="beijing-precipitation.png" alt="Average monthly precipitation for Beijing, 1981–2010 normal.">
+        <figcaption>Average monthly precipitation, Beijing (1981–2010 normal).</figcaption>
+      </figure>
+    </section>
 
-    <a class="back" href="../index.html#journal">← Back to all entries</a>
+    <section>
+      <h2>What I found</h2>
+      <p>Beijing’s hottest month is July, about 26.7°C, and its coldest is January, about -3.1°C. July is also the wettest month, about 160 mm, while December is the driest, about 2 mm. The rain falls in the hot season, which is the East Asian monsoon pattern. Compared with Shanghai, Beijing is colder and drier; compared with Guangzhou, Beijing has a much stronger winter and a shorter wet season. Within China, Beijing shows a northern monsoon distribution with strong seasonal clustering. Station density is much higher in eastern China than in the west.</p>
+    </section>
 
-  </div>
-</article>
-</main>
+    <section>
+      <h2>What this does not show</h2>
+      <p>The 1981–2010 window is not the current WMO normal (1991–2020). Monthly means hide daily variance. One station is not a place; it is one instrument, often at an airport. Points are not a surface, and empty areas are not average—they are places with no instrument or no digitised record. Web Mercator also distorts area and density at high latitudes. Nothing here is causal.</p>
+    </section>
 
-<footer class="site-foot">
-  <div class="wrap wrap-narrow">
-    <p>Mingqian · SOCS-SHU 289 · NYU Shanghai · Fall 2026</p>
-  </div>
-</footer>
-
+    <p>Personal reflections and the full AI-use disclosure have been submitted privately in Brightspace.</p>
+  </main>
 </body>
 </html>
