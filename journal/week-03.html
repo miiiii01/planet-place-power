@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 03 - Terrain</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>Week 03 - Terrain</h1>
+    <p>The shape of my site in Haidian, Beijing</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>The question</h2>
+      <p>What shape is my site in Haidian, Beijing, and what does that shape do to water?</p>
+    </section>
+
+    <section>
+      <h2>The data</h2>
+      <p><strong>Terrain:</strong> <code>Airbus_WorldDEM4Ortho_24m</code>, pixel size <strong>24.74 m</strong>, vertical datum EGM2008, source Airbus Defence and Space GmbH, accessed via Esri Living Atlas Terrain service. Date range 2010–14. LE90 is not stated in the coverage pop-up metadata; I record it as “vertical accuracy not stated in the layer metadata”. Licence: requires an ArcGIS Online organizational subscription, does not consume credits.</p>
+      <p><strong>Soil:</strong> SoilGrids organic carbon density, depth 0–5 cm, predicted value at my site 32 hg/m³, source ISRIC SoilGrids (CC BY 4.0), accessed via soilgrids.org and compared with the Esri republication <em>World Soils 250m Soil Organic Carbon</em>.</p>
+    </section>
+
+    <section>
+      <h2>The method</h2>
+      <p>I started from my Week 2 map in ArcGIS Online and saved a copy as <em>Tutorial 2 · Terrain · Mingqian Chen</em>. I added the Living Atlas layers <code>Terrain</code>, <code>Terrain - Slope Degrees</code>, and <code>Terrain - Slope Map</code>. To find the actual source data for my site, I added the <code>World Elevation Coverage Map</code> and clicked on my site to page through the coverage pop-ups until I found the finest dataset: <code>Airbus_WorldDEM4Ortho_24m</code> with a pixel size of 24.74 m.</p>
+      <p>For the slope comparison, I used <code>Terrain - Slope Degrees</code>. First I set the style to <em>Stretch → Minimum maximum</em> with dynamic range adjustment, and took a screenshot (<code>slope_stretch.jpg</code>). Then I switched to <em>Classify → Manual breaks</em> with 5 classes and set breaks at 0, 0.5, 1, 2, 5, and 10 degrees, and took a second screenshot at the same extent (<code>slope_classified.jpg</code>). I also flew to Berlin at a similar zoom level to compare how a 1 m dataset resolves embankments and kerbs, while my Beijing site does not.</p>
+      <p>For soil, I opened <code>soilgrids.org</code>, navigated to my site, selected <em>Organic carbon density</em> and depth <em>0–5 cm</em>, and recorded the predicted value and coordinates. I took a screenshot (<code>soil_main.jpg</code>), then turned on <em>View uncertainty layer</em> and took a second screenshot (<code>soil_uncertainty.jpg</code>).</p>
+    </section>
+
+    <section>
+      <h2>The evidence</h2>
+      
+      
+      <iframe 
+        width="100%" 
+        height="600" 
+        style="max-width:700px; display:block; margin:0 auto; border:0;" 
+        allow="local-network-access; geolocation" 
+        title="Tutorial 2-Terrain -Mingqian" 
+        src="https://nyuds.maps.arcgis.com/apps/mapviewer/index.html?configurableview=true&webmap=8721ef2c578c48018237e7bb1da448e0&theme=light&scroll=false&center=115.88357870079733,39.41593564488464&scale=4622324.434309">
+      </iframe>
+      <figcaption>Terrain and slope at my Beijing site, source Esri Living Atlas.</figcaption>
+
+      <figure>
+        <img src="slope_stretch.jpg" alt="Continuous stretch slope map of Beijing site">
+        <figcaption><strong>Figure 1.</strong> Continuous stretch of slope degrees at my site. The colour ramp is squeezed to the local range; the landscape looks smooth and gradual.</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="slope_classified.jpg" alt="Classified slope map of Beijing site with manual breaks">
+        <figcaption><strong>Figure 2.</strong> Manual breaks at 0, 0.5, 1, 2, 5, and 10 degrees. The same numbers now show hard boundaries. I put the break at these values because they are meaningful thresholds for urban drainage and construction safety in a flat city.</figcaption>
+      </figure>
+
+      
+      <figure>
+        <img src="berlin_comparison.jpg" alt="Berlin slope map showing embankments and kerbs">
+        <figcaption><strong>Figure 3.</strong> Berlin at a similar zoom level. A 1 m dataset resolves embankments, kerbs, and cuttings. My Beijing site at 24.74 m does not show these features.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="soil_main.jpg" alt="SoilGrids organic carbon density prediction at Beijing site">
+        <figcaption><strong>Figure 4.</strong> Predicted organic carbon density (0–5 cm) at my site: 32 hg/m³. This is a prediction, not a measurement.</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="soil_uncertainty.jpg" alt="SoilGrids uncertainty layer at Beijing site">
+        <figcaption><strong>Figure 5.</strong> The uncertainty layer switched on. The uncertainty is published per pixel, but it is a separate layer that users must actively request.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>What I found</h2>
+      <p><strong>1. Expectation vs. what the map showed.</strong> I expected Beijing to be high in the northwest and low in the southeast, with water leaving roughly east or southeast. The regional slope map confirms this: the Western Hills and Yanshan are steep, while the southeast plain is flat. However, at my site scale, with a 24.74 m cell, the slope map is almost blank. It can confirm the regional tilt, but it cannot confirm that water flows east at my exact site.</p>
+      
+      <p><strong>2. Regional pattern.</strong> The steep ground is in the northwest (Western Hills, Yanshan), and the flat ground is the North China Plain to the southeast. Rivers such as the Yongding and Chaobai flow from northwest to southeast, building alluvial fans. This pattern is explained by tectonic uplift and fluvial deposition.</p>
+      
+      <p><strong>3. Site-scale movement of water and material.</strong> At my site, the ground falls slightly to the southeast. When it rains, surface water first enters street drains and the urban sewer network, eventually reaching the Tonghui River, the North Canal, and the Hai River system, and finally the Bohai Sea. Material would move with surface runoff, but most sediment is trapped by the urban drainage system.</p>
+      
+      <p><strong>4. Comparison: regional and data resolution.</strong> Regionally, my site is typical Beijing: high northwest, low southeast. In terms of data resolution, my site falls into the <strong>24.74 m</strong> group, together with Shanghai, Accra, Abu Dhabi, Buenos Aires, and Tel Aviv — not the 1 m group of Berlin, London, Paris, New York, Los Angeles, or Washington DC. This difference is not geological; it is institutional. Cities with a national or municipal LiDAR survey that is published openly get the 1 m data. Where that has not happened, the service falls back to a commercial global product like Airbus WorldDEM4.</p>
+      
+      <p><strong>5. Limits: what this map cannot support.</strong> This map cannot support a claim that my site will not flood, nor that water will definitely flow east. At 24.74 m per cell, the grid cannot resolve kerbs, road camber, drainage inlets, embankments, or the flood wall. It is a terrain model, not a drainage model. Slope is also not stability.</p>
+    </section>
+
+    <section>
+      <h2>What this does not show</h2>
+      <p>This map cannot support a claim that my site will not flood. At 24.74 m per cell, the elevation grid cannot resolve kerbs, drainage inlets, embankments, or flood walls. It is a terrain model, not a drainage model. Slope is also not stability; material strength, water pressure, and vegetation are not in this map.</p>
+      <p>In addition, the Terrain layers require an ArcGIS Online organizational subscription. A signed-out reader may not see the live terrain layers in the embedded map. The screenshots included above are therefore the primary evidence for this entry.</p>
+    </section>
+
+    <section>
+      <h2>AI-usage disclosure</h2>
+      <p>AI-assisted for tidying the HTML and checking structure, using DeepSeek. I verified the page by opening it on a phone and a laptop. The metadata lookup, screenshots, symbology choices, map reading, and interpretation are my own.</p>
+    </section>
+
+    <p>Personal reflections have been submitted privately in Brightspace.</p>
+  </main>
+</body>
+</html>
