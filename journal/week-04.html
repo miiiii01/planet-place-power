@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 04 - Vegetation Index</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>Week 04 - What the green means</h1>
+    <p>Vegetation index in Haidian, Beijing</p>
+  </header>
 
+  <main>
+    <section>
+      <h2>The question</h2>
+      <p>What is the green at my site in Haidian actually made of?</p>
+    </section>
+
+    <section>
+      <h2>The data</h2>
+      <p><strong>Sensor:</strong> Landsat 8/9 OLI/TIRS, cell size 30 m. <strong>Date:</strong> October 23, 2026. <strong>Cloud cover:</strong> 0.00%. <strong>Index:</strong> NDVI using Band 5 (NIR) and Band 4 (Red). Licence: Public, token-free (Esri Living Atlas).</p>
+    </section>
+
+    <section>
+      <h2>The method</h2>
+      <p>I used the Multispectral Landsat layer and the NDVI Raw processing template to read the site value (0.205). In Landsat Explorer, I recorded the acquisition date and cloud cover, and used the Spectral Profile tool to compare the reflectance of a forest vs. a built surface. I set a threshold mask at 0.5 to identify high-greenness areas and locate a non-habitat place.</p>
+    </section>
+
+    <section>
+      <h2>The evidence</h2>
+      
+      <figure>
+        <img src="site.png" alt="NDVI value at my site">
+        <figcaption><strong>Figure 1.</strong> The NDVI Raw layer at my site, reading approximately 0.205.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="trees.png" alt="Spectral profile of trees">
+        <figcaption><strong>Figure 2a.</strong> Spectral profile of a tree canopy. Note the sharp jump in the near-infrared (NIR) band.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="building.png" alt="Spectral profile of a building">
+        <figcaption><strong>Figure 2b.</strong> Spectral profile of a built surface, which remains relatively flat across the red/NIR boundary.</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="ndvi_mask.png" alt="NDVI mask at 0.5">
+        <figcaption><strong>Figure 3.</strong> NDVI mask at threshold 0.5. The bright green areas are considered "highly vegetated" by the index, including both natural forests and artificial turf.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="bajia_park_1.jpg" alt="Playground and rubber surface at Bajia Suburban Park">
+        <figcaption><strong>Figure 4.</strong> Ground view of the Bajia Suburban Park area. Much of the surface is artificial rubber playground and pavement, which offers zero habitat.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="bajia_park_2.jpg" alt="Paved pathway and planted trees at Bajia Suburban Park">
+        <figcaption><strong>Figure 5.</strong> Wide paved paths and neatly planted trees. This is a heavily managed recreational landscape for humans, not a natural habitat for wildlife.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>What I found</h2>
+      <p><strong>1. Expectation vs. what the map showed.</strong> I predicted that the Olympic Forest Park would have the highest NDVI, followed by the Summer Palace, and the golf course would be the lowest. The actual data showed that dense woodlands score high, but the managed grass of the golf course also scores very high because it is continuously irrigated and fertilized.</p>
+      
+      <p><strong>2. Site.</strong> The index at my site is <strong>0.205</strong>, on October 23, 2026, at 0% cloud cover. The green at my site is actually made of a mix of urban street trees and small residential lawns, surrounded by concrete and asphalt.</p>
+      
+      <p><strong>3. City.</strong> Compared to the 0.5 threshold, my site is relatively low. It is below the heavily vegetated areas like the Summer Palace and Olympic Forest Park, showing that my neighborhood is dominated by built surfaces rather than dense canopy.</p>
+      
+      <p><strong>4. The named place.</strong> My high-index, low-habitat place is the <strong>Bajia Suburban Park (八家郊野公园)</strong> area near Qinghe. Its approximate NDVI value is above 0.5. While the satellite image shows it as a solid block of "green," ground-level photos reveal extensive rubber playgrounds, wide paved walking paths, and neatly arranged monoculture trees. It is a highly managed recreational area that provides very little actual biodiversity or structural habitat.</p>
+      
+      <p><strong>5. Limits.</strong> This map cannot tell the difference between a biodiverse native woodland and a monoculture lawn. It only measures leaf density and does not see what is underneath the canopy.</p>
+    </section>
+
+    <section>
+      <h2>What this does not show</h2>
+      <p><strong>Proxy sentence:</strong> I am using the NDVI at my site to stand for how much living habitat is actually there, and it might fail because it counts a highly managed recreational park with paved paths and manicured trees as the same green as a natural forest.</p>
+      <p>It also does not show what is under the canopy, or the presence of specific species. A golf course can have a higher NDVI than a wetland.</p>
+    </section>
+
+    <section>
+      <h2>AI-usage disclosure</h2>
+      <p>AI-assisted for tidying the HTML and checking structure, using DeepSeek. The index readings, the threshold, the choice of the non-habitat place and the proxy sentence are my own.</p>
+    </section>
+
+    <p>Personal reflections have been submitted privately in Brightspace.</p>
+  </main>
+</body>
+</html>
