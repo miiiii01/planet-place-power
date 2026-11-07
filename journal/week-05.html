@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 05 - Where the water goes</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>Week 05 - Where the water goes</h1>
+    <p>The catchment and the water index in Haidian, Beijing</p>
+  </header>
 
+  <main>
+    <section>
+      <h2>The question</h2>
+      <p>Where does my site's water come from and where does its runoff go, and who else has a claim on it?</p>
+    </section>
+
+    <section>
+      <h2>The data</h2>
+      <p><strong>Catchment Delineation:</strong> MERIT-Hydro (2021) and HydroSHEDS (2013) datasets via Global Watersheds. Higher precision vs Lower precision. No sign-in required.</p>
+      <p><strong>Water Risk Index:</strong> Aqueduct 4.0 Water Risk (WRI), Baseline Annual. Baseline period 1979–2019, data vintage April 2023. Licence: CC BY 4.0.</p>
+    </section>
+
+    <section>
+      <h2>The method</h2>
+      <p>I used my site coordinates (40.000, 116.300) in the Global Watersheds app. I ran the delineation three times: first with Higher Precision on MERIT-Hydro, then Lower Precision on MERIT-Hydro, and finally Lower Precision on HydroSHEDS. For the water risk, I attempted to use ArcGIS Map Viewer, but due to network timeouts loading the multi-layer service, I used the WRI Aqueduct Water Risk Atlas directly to read the Baseline Water Stress for Beijing.</p>
+    </section>
+
+    <section>
+      <h2>The evidence</h2>
+      
+      <figure>
+        <img src="high_merit.png" alt="High precision MERIT catchment">
+        <figcaption><strong>Figure 1.</strong> Catchment using MERIT-Hydro at Higher Precision. The algorithm found a tiny urban catchment of only 9 km² with no river reaches.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="low_merit.png" alt="Low precision MERIT catchment">
+        <figcaption><strong>Figure 2.</strong> Catchment using MERIT-Hydro at Lower Precision. The area jumps to 180 km², snapping to a completely different river outlet.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="low_hydro.png" alt="Low precision HydroSHEDS catchment">
+        <figcaption><strong>Figure 3.</strong> Catchment using HydroSHEDS at Lower Precision. The area changes again to 130 km², showing how different datasets interpret the flat urban terrain.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="aqueduct_map.png" alt="Baseline water stress in Beijing">
+        <figcaption><strong>Figure 4.</strong> Baseline Water Stress in Beijing, read from WRI Aqueduct 4.0. The region is colored dark red, indicating "Extremely High" water stress (>80%). Source: WRI Aqueduct Water Risk Atlas.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>What I found</h2>
+      <p><strong>1. Expectation.</strong> I predicted water would flow southeast. The regional catchment does flow roughly southeast, but the exact boundary is highly sensitive to the dataset. My guess of the catchment size was around 500 km², but the software returned everything from 9 km² to 180 km².</p>
+      
+      <p><strong>2. The boundary.</strong> My catchment area varied wildly: 9 km² (MERIT Higher), 180 km² (MERIT Lower), and 130 km² (HydroSHEDS Lower). The pour point moved significantly. On flat urban terrain, the software struggles to find a defined channel, so it snaps the outlet to whatever coarse river trunk it can find. It is not an accuracy issue; it is the software deciding which river I meant.</p>
+      
+      <p><strong>3. The unit.</strong> The baseline water stress for the Haihe basin (where Beijing is located) is <strong>Extremely High (>80%)</strong>. This number is computed for a massive sub-basin that crosses provincial borders (Hebei, Beijing, Tianjin, etc.), which is thousands of times larger than my actual site (a few city blocks).</p>
+      
+      <p><strong>4. The crossing.</strong> The one thing at my site that crosses the divide is the <strong>South-to-North Water Transfer Project</strong>. The water in my tap comes from the Danjiangkou Reservoir in the Yangtze basin, thousands of kilometres away. The delineated catchment only describes rain on the roof, not the actual water supply. Additionally, urban sewer pipes actively move runoff out of this boundary, ignoring the topography entirely.</p>
+      
+      <p><strong>5. Limits.</strong> This map cannot support a claim about water quality or whether my building has enough water. The index counts volume, meaning water that is present but too polluted to use still counts as "supply".</p>
+    </section>
+
+    <section>
+      <h2>What this does not show</h2>
+      <p><strong>Proxy sentence:</strong> I am using the delineated boundary at my site to stand for where my site's water actually goes and comes from, and it might fail because the routine has no representation of a pipe or a canal, so it describes rain on the roof and not the human-managed supply.</p>
+      <p>It also does not show groundwater, which is invisible to a surface water catchment.</p>
+    </section>
+
+    <section>
+      <h2>AI-usage disclosure</h2>
+      <p>AI-assisted for tidying the HTML and checking structure, using DeepSeek. The delineations, the three-dataset comparison, the thing that crosses the boundary and the proxy sentence are my own.</p>
+    </section>
+
+    <p>Personal reflections have been submitted privately in Brightspace.</p>
+  </main>
+</body>
+</html>
