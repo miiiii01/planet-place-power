@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 06 - Land cover, then and now</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>Week 06 - Land cover, then and now</h1>
+    <p>Two dates, and the change the map is not able to see</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>The question</h2>
+      <p>What was the land at my site used for before it was used for this, and what did it become? The pattern and distribution of built areas reveal hidden assumptions inside the classifier.</p>
+    </section>
+
+    <section>
+      <h2>The data</h2>
+      <p><strong>Sentinel-2 10m Land Use/Land Cover Time Series:</strong> Esri and Impact Observatory. 10m resolution. Chosen years: 2017, 2022, and 2025. Licence: Esri Master License Agreement with source data under CC BY 4.0.</p>
+      <p><strong>Landsat 1980's Land Use/Land Cover:</strong> Esri and Impact Observatory. 30m resolution, a single composite for 1984–1992. Licence: Esri Master License Agreement (no CC BY clause).</p>
+    </section>
+
+    <section>
+      <h2>The method</h2>
+      <p><strong>Held constant in Part 1:</strong> Extent, scale (1 px : 7 m in Haidian, 1 px : 15 m in Liangxiang), rendering (same 9 classes), and instrument (Sentinel-2). </p>
+      <p><strong>Not held constant in Part 3:</strong> The sensor changed (Landsat 5 to Sentinel-2), the resolution changed (30m to 10m), and the time window changed (a 9-year composite 1984–1992 vs. a single year). These differences matter for the changes I am claiming.</p>
+      <p>I used the Land Cover Explorer Swipe tool for modern comparisons. To test the "third date" effect, I compared 2017-2022 against 2017-2025. For Part 3, I opened the Landsat 1980s layer in Map Viewer using the provided link.</p>
+      
+      <!-- 记得把这里替换成你的 App Link，如果没有直接删掉这行也没关系 -->
+      <p><strong>App Link:</strong> <a href="https://livingatlas.arcgis.com/landcoverexplorer/" target="_blank">Open the Land Cover Explorer</a>.</p>
+    </section>
+
+    <section>
+      <h2>The evidence</h2>
+      
+      <h3>Haidian (My Site)</h3>
+      <figure>
+        <img src="Haidian_1980.png" alt="Land cover of Haidian in the 1980s">
+        <figcaption><strong>Figure 1.</strong> Landsat 1980's (1984–1992, 30m). Haidian shows significant red (Built Area), surrounded by extensive yellow cropland.</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="2022_Haidian.png" alt="Land cover of Haidian in 2022">
+        <figcaption><strong>Figure 2.</strong> Sentinel-2 2017 vs 2022. The change panel shows Trees +0.9% and Built Area -0.9%. This reflects "leave blank, increase green" policies.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="2025_Haidian.png" alt="Land cover of Haidian in 2025">
+        <figcaption><strong>Figure 3.</strong> Sentinel-2 2017 vs 2025. Trees +1% and Built Area -1.1%. The greening trend in Haidian persists.</figcaption>
+      </figure>
+
+      <h3>Liangxiang (Rapid Urbanization)</h3>
+      <figure>
+        <img src="liangxiang_1980.png" alt="Land cover of Liangxiang in the 1980s">
+        <figcaption><strong>Figure 4.</strong> Liangxiang in the 1980s. Almost entirely yellow (Crops) and green (Trees/Rangeland).</figcaption>
+      </figure>
+
+      <figure>
+        <img src="2022_liangxiang.png" alt="Land cover of Liangxiang in 2022">
+        <figcaption><strong>Figure 5.</strong> Sentinel-2 2017 vs 2022. Crops -2.5%, Built Area +3%.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="2025_liangxiang.png" alt="Land cover of Liangxiang in 2025">
+        <figcaption><strong>Figure 6.</strong> Sentinel-2 2017 vs 2025. Crops -3.2%, Built Area +4%. A massive block of red has appeared.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>What I found</h2>
+      <p><strong>1. Expectation.</strong> I expected to see massive changes from cropland to city in the suburbs. The maps confirm this in Liangxiang, but at Haidian, the 1980s map already showed significant built-up area.</p>
+      
+      <p><strong>2. The comparison and the third date.</strong> In Liangxiang, the 2017-2022 panel shows Crops -2.5% and Built +3%. But the 2017-2025 panel shows Crops -3.2% and Built +4%. The story (farmland turning into city) survives, but the magnitude of change depends heavily on which end date you pick. A two-date swipe hides the messy reality of pixels wandering between classes.</p>
+      
+      <p><strong>3. The category blind spot.</strong> At the Summer Palace, the dense, ancient trees are classified as <strong>Built Area</strong> (red). As stated in the product's description, "yards, parks, and groves will appear as built area rather than trees." This is a stated property of the list, not a genuine error.</p>
+
+      <p><strong>4. The validation gap.</strong> The validation report states that agreement with six reference products ranges from 61% to 81%. But <strong>not one of the six references covers China</strong>; the nearest is Vietnam at 61%. For my site, I do not know the error rate at all.</p>
+
+      <p><strong>5. A surprising co-increase.</strong> Looking at Haidian (Figures 2 & 3), between 2017 and 2025, Trees increased (+1%) while Built Area decreased (-1.1%). Beijing's urban greening policies are physically visible in the data. However, the classifier counts these urban parks as "Built Area" by definition, so green infrastructure is paradoxically hidden inside the built class.</p>
+    </section>
+
+    <section>
+      <h2>What this does not show</h2>
+      <p><strong>Proxy sentence:</strong> I am using the land cover classes at my site to stand for what is actually on the ground, and it might fail because <strong>the classifier's class boundary defines urban parks and groves as Built Area</strong> (meaning my green space cannot appear as 'Trees' in the data), and because of <strong>mixed pixels</strong> (the site's trees are narrower than the 10m resolution, so they are averaged into whatever surrounds them).</p>
+      <p>It also does not show a validated classification for my region: the 1980s product's six reference sets do not cover China, so the agreement scores say nothing about the error rate at my Haidian site.</p>
+    </section>
+
+    <section>
+      <h2>AI-usage disclosure</h2>
+      <p>AI-assisted for tidying the HTML and checking structure, using DeepSeek. I verified it by opening the page on a phone and a laptop. The comparison, the third-date check, the class my site cannot express and the proxy sentence are my own.</p>
+    </section>
+
+    <p>Personal reflections have been submitted privately in Brightspace.</p>
+  </main>
+</body>
+</html>
