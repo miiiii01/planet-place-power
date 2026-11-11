@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 07 - From a table to a map</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>Week 07 - From a table to a map</h1>
+    <p>Your first join, and the countries it quietly drops</p>
+  </header>
 
+  <main>
+    <section>
+      <h2>The question</h2>
+      <p>What does my site's country physically offer or deny, and what does it actually trade? The choropleth shows the <strong>distribution</strong> of value across the <strong>scale</strong> of a nation, but it erases the specific <strong>place</strong> where the activity happens.</p>
+    </section>
+
+    <section>
+      <h2>The data</h2>
+      <p><strong>Trade Table:</strong> The Atlas of Economic Complexity (Harvard Growth Lab), 2024, HS92, current US dollars. Source data: UN Comtrade and IMF. <em>Licence:</em> The Atlas permits reuse "provided that users cite the Atlas and underlying data sources appropriately." <em>Data limitation:</em> The 2024 data reflects a reconciled estimate with a 12- to 18-month reporting delay.</p>
+      <p><strong>Boundary File:</strong> Natural Earth, Admin 0 – Countries, 1:110m, v5.1.1. <em>Licence:</em> Public Domain. 177 polygons.</p>
+    </section>
+
+    <section>
+      <h2>The method</h2>
+      <p>I uploaded the trade CSV (as a non-spatial table) and the Natural Earth zip to ArcGIS Online. I performed a <strong>Left Join</strong> from the boundary layer to the trade table. I joined on <strong>Target field: NAME</strong> (boundary file) and <strong>Join field: country</strong> (trade table). The unit of the number is Gross Export Value in current US dollars.</p>
+    </section>
+
+    <section>
+      <h2>The evidence</h2>
+      <figure>
+        <img src="choropleth_china.png" alt="Choropleth of China's exports">
+        <figcaption><strong>Figure 1.</strong> Gross exports from China by destination (2024, current US dollars). Joined on country name. Notice that China itself is completely white. Because the table records destinations of exports, the producer (China) is erased while the consumers (US, Russia) are highlighted.</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="points_china.png" alt="Points of export origin">
+        <figcaption><strong>Figure 2.</strong> Three physical points of export origin (Shanghai Port, Shenzhen Yantian Port, and Suzhou Industrial Park). These points carry no value data but show where the physical work actually happens.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="combined_china.png" alt="Combined view of points and choropleth">
+        <figcaption><strong>Figure 3.</strong> Combined view. The global demand is shown in blue, while the actual physical origin of these goods is concentrated in three coastal points.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>What I found</h2>
+      <p><strong>1. Expectation vs. Data.</strong> I guessed China's biggest export was manufactured goods. The data confirms this, but the most striking finding was the visual output: the country that physically produces the goods is completely blank.</p>
+      
+      <p><strong>2. The join and the blank origin.</strong> Because the table is titled "Where did China export to", there is no row for China itself. Therefore, the choropleth paints the consumers in dark blue and leaves the producer in white. This is an <strong>attribution failure</strong>: the map implies that the destination countries are generating the value, while erasing the actual site of production.</p>
+      
+      <p><strong>3. The physical link.</strong> China's massive export volume is physically sourced from specific coastal ports and manufacturing clusters, not from the entire territory. The white space of China on the map hides the fact that the economic engine is highly concentrated in the east.</p>
+      
+      <p><strong>4. Limits.</strong> The choropleth cannot be used to argue about local wages, environmental impact, or infrastructure in the destination countries. It treats the entire territory of the US as a single consumer.</p>
+    </section>
+
+    <section>
+      <h2>What this does not show</h2>
+      <p><strong>Proxy sentence:</strong> I am using the destination country's polygon to stand for where the economic activity happens, and it might fail because <strong>the value is credited to the importing country while the physical production and environmental cost are erased at the origin</strong>, meaning the map shows the consumer's demand but hides the producer's reality.</p>
+      <p>The points are not the truth either. They understate the system by leaving out the supply chains, the road networks, and the people who work there.</p>
+    </section>
+
+    <section>
+      <h2>AI-usage disclosure</h2>
+      <p>AI-assisted for tidying the HTML and checking structure, using DeepSeek. The choice of table, the join field, the points and the proxy sentence are my own.</p>
+    </section>
+
+    <p>Personal reflections have been submitted privately in Brightspace.</p>
+  </main>
+</body>
+</html>
