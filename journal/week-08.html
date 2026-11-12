@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 08 - The infrastructure you cannot see</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>Week 08 - The infrastructure you cannot see</h1>
+    <p>Networks, visibility, and the licensing of data</p>
+  </header>
 
+  <main>
+    <section>
+      <h2>The question</h2>
+      <p>What <strong>network</strong> infrastructure is near my site, and what is absent from the open data? The <strong>scale</strong> and <strong>place</strong> of digital infrastructure determine what is visible and what is obscured.</p>
+    </section>
+
+    <section>
+      <h2>The data</h2>
+      <p><strong>Submarine Cable Map (TeleGeography):</strong> Screenshots are republishable under CC BY-SA 4.0 with credit. The underlying data is restricted to subscribers. <em>Verdict: May screenshot, may not download data.</em></p>
+      <p><strong>OpenStreetMap (via Overpass Turbo):</strong> The data is under the ODbL. <em>Verdict: May republish as a Produced Work with attribution and ODbL notice; may republish data as a Derivative Database with share-alike.</em></p>
+      <p><strong>Data Center Map:</strong> Terms prohibit scraping or reproducing data. <em>Verdict: May not copy or distribute.</em></p>
+    </section>
+
+    <section>
+      <h2>The method</h2>
+      <p>I queried Overpass Turbo within the bounding box of my Beijing site on November 12, 2026. First, I queried for all <code>telecom</code> tags. Second, I queried for <code>power=substation</code> and <code>power=tower</code> to map the visible electrical grid, and exported the result as a GeoJSON. I manually typed three data center locations (Zhongguancun, Jiuxianqiao, and Yizhuang) from commercial inventories into a CSV, which I added as a separate layer to show the contrast in the Beijing metropolitan area.</p>
+    </section>
+
+    <section>
+      <h2>The evidence</h2>
+      
+      <h3>1. The Overpass Query Results</h3>
+      <figure>
+        <img src="telecom.png" alt="Overpass Turbo result for telecom query">
+        <figcaption><strong>Figure 1.</strong> Overpass Turbo query for <code>telecom</code> tags in Beijing. The map returned an empty dataset (0 objects), proving that telecommunications infrastructure is systemically absent from the open map.</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="power_station.png" alt="Overpass Turbo result for power query">
+        <figcaption><strong>Figure 2.</strong> Overpass Turbo query for <code>power=substation</code> and <code>power=tower</code> in the exact same bounding box. Thousands of objects (blue points) were returned, showing the stark difference in data coverage.</figcaption>
+      </figure>
+
+      <h3>2. The Rendered Maps in ArcGIS</h3>
+      <figure>
+        <img src="map_zoom_one.png" alt="Zoomed-in view of power grid and data centers in Haidian">
+        <figcaption><strong>Figure 3.</strong> Local-scale view of Haidian. The physical power grid (purple dots, ~4,800 objects) is overwhelmingly visible, forming dense networks along roads. The data center (red dot) is an isolated node. Contains information from OpenStreetMap under the ODbL. Data centers read from commercial inventories, Nov 2026.</figcaption>
+      </figure>
+      
+      <figure>
+        <img src="map_zoom_two.png" alt="Metropolitan view of data centers in Beijing">
+        <figcaption><strong>Figure 4.</strong> Metropolitan-scale view (urban core of Beijing). As we zoom out, the power infrastructure blends into the background, but the three manually cited data centers (red dots) remain isolated. This demonstrates how map scale determines which infrastructure we perceive.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>What I found</h2>
+      <p><strong>1. Expectation vs. Data.</strong> I guessed that I was allowed to screenshot the Submarine Cable Map (Yes) but NOT allowed to publish OpenStreetMap data on a web page (No). The evidence showed I was wrong about OSM: I am explicitly allowed to publish it as long as I attribute it and include the ODbL notice. My prediction of Shanghai having 20 data centers was also off; commercial inventories list 50-65, while OpenStreetMap volunteers have only mapped 4 in the entire municipality. Most surprisingly, OpenStreetMap only records 58 cable landing stations globally, compared to 1,925 known to the industry.</p>
+      
+      <p><strong>2. The query and the absence.</strong> The telecom query returned exactly zero objects (Figure 1), while the power query returned thousands (Figure 2). The zero result means <em>OpenStreetMap records no telecom objects in this box</em>. It does not mean there are no telecom objects there. The electrical towers are visible from the air, which is how volunteers trace them. The cables are buried underground, and the landing stations are behind fences. The data is missing because of the vantage point of the recorder.</p>
+
+      <p><strong>3. The scale illusion.</strong> As shown in my ArcGIS maps, when zoomed out to the urban core (Figure 4), the physical power grid blends into the background, leaving the three data centers highly visible. When zoomed in locally (Figure 3), the power grid dominates the visual field. This proves that "visibility" is not just about what is underground, but also about the map's scale. We can only see the network if we choose the right scale.</p>
+      
+      <p><strong>4. Republication.</strong> TeleGeography allows screenshots but not data. OSM allows maps with ODbL notices but puts share-alike on exported databases. Data Center Map prohibits reproduction entirely.</p>
+    </section>
+
+    <section>
+      <h2>What this does not show</h2>
+      <p><strong>Proxy sentence:</strong> I am using mapped infrastructure to stand for what exists at my site, and it might fail because <strong>OpenStreetMap is traced from aerial imagery, so underground cables and enclosed data halls are systematically absent, while overhead power lines are nearly complete.</strong></p>
+      <p>The data center points are not the truth either; they are self-reported by operators who want to be found, and the open map has no data on what is actually inside those buildings.</p>
+    </section>
+
+    <section>
+      <h2>AI-usage disclosure</h2>
+      <p>AI-assisted for checking the Overpass query syntax in the week-08 entry, using DeepSeek. I verified it by running the query and confirming the result count matched the map. The choice of extent, reading of the three licence pages, counts and proxy sentence are my own.</p>
+    </section>
+
+    <p>Personal reflections have been submitted privately in Brightspace.</p>
+  </main>
+</body>
+</html>
